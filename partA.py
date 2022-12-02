@@ -4,8 +4,7 @@ import sys
 import bs4
 import requests
 
-""" might need to add relative urls to the sumation
-"""
+
 def read_index_file(url):
     with open(url,"r") as index_file:
         final = []
@@ -13,6 +12,7 @@ def read_index_file(url):
         for item in list_of_relevant_sites:
             final.append(item.strip())
     return final
+
 
 def get_full_url(base_url,relative_url):
     return urllib.parse.urljoin(base_url, relative_url)
