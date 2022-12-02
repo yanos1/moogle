@@ -25,7 +25,7 @@ def new_r_update(old_dic):
     for iteration in range(int(sys.argv[3])):
         new = {key: 0 for key in file_data(sys.argv[4])}
         for item in new: #items are names
-            for name in old_dic:
+            for name in new:
                 new[item] += rank_calculation(old_dic,name,item)
         old_dic.update(new)
 
@@ -34,6 +34,7 @@ def new_r_update(old_dic):
 
 if __name__ == '__main__':
     create_pickle_file(sys.argv[5],new_r_update(start_dict()))
+    print(new_r_update(start_dict()))
 
 
 

@@ -15,6 +15,7 @@ def word_dict_creation():
         soup = bs4.BeautifulSoup(html_content,"html.parser")
         for p in soup.find_all("p"):
             data += p.text
+            data += "\n"
         list_of_words = data.replace("\t", " ").replace("\n", " ").split()
         for word in list_of_words:
             hafred_and_meshol(word_dict,site,word)

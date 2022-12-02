@@ -72,5 +72,6 @@ def final_result(dict):
 
 
 if __name__ == '__main__':
+    print(final_result(all_files_contents()))
     create_pickle_file(sys.argv[4],final_result(all_files_contents()))
 
