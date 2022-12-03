@@ -1,13 +1,12 @@
 import sys
 import bs4
-from partA import get_full_url, get_html_content, read_index_file, create_pickle_file
-
+from HTML_functions import read_index_file, get_html_content, get_full_url
 
 def get_relavent_sites(data):
     return read_index_file(data)
 
 
-def word_dict_creation():
+def words_dict():
     word_dict = dict()
     data = ""
     for site in get_relavent_sites(sys.argv[3]):
@@ -30,6 +29,6 @@ def hafred_and_meshol(dic,site,word):
         dic[word] = {sit: 0 for sit in get_relavent_sites(sys.argv[3])}
         dic[word][site] = 1
 
-if __name__ == '__main__':
-    create_pickle_file(sys.argv[4],word_dict_creation())
+
+
 

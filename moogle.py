@@ -1,23 +1,19 @@
-import urllib.parse
-import pickle
+
 import sys
-import bs4
-import requests
+from crawl import final_result,crawl
+from page_rank import page_rank,start_dict
+from words_dict import words_dict
+from search import get_final_results, produce_relevant_pages, create_output_file
+from HTML_functions import create_pickle_file
 
 
-def read_index_file(url):
-    with open(url,"r") as index_file:
-        final = []
-        list_of_relevant_sites = index_file.readlines()
-        for item in list_of_relevant_sites:
-            final.append(item.strip())
-    return final
+if sys.argv[1] == "crawl":
+    create_pickle_file(sys.argv[4], final_result(crawl()))
+elif sys.argv[1] == "page_rank":
+    create_pickle_file(sys.argv[4], page_rank(start_dict()))
+elif sys.argv[1] == "words_dict":
+    create_pickle_file(sys.argv[4], words_dict())
+elif sys.argv[1] == "search":
+    create_output_file()
+    get_final_results(produce_relevant_pages(sys.argv[3]), sys.argv[3])
 
-
-def get_full_url(base_url,relative_url):
-    return urllib.parse.urljoin(base_url, relative_url)
-
-
-def get_html_content(html_file):
-    reponse = requests.get(html_file)
-    return reponse.text

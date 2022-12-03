@@ -1,11 +1,6 @@
-import pickle
 import sys
-from partA import create_pickle_file
+from HTML_functions import file_data
 
-def file_data(data):
-    with open(data, "rb") as trafic_dict:
-        file = pickle.load(trafic_dict)
-    return file
 
 def start_dict():
     r = {key:1 for key in file_data(sys.argv[4])}
@@ -20,7 +15,7 @@ def rank_calculation(old_dict, name, item):
     return calc
 
 
-def new_r_update(old_dic):
+def page_rank(old_dic):
 
     for iteration in range(int(sys.argv[3])):
         new = {key: 0 for key in file_data(sys.argv[4])}
@@ -32,9 +27,6 @@ def new_r_update(old_dic):
     return old_dic
 
 
-if __name__ == '__main__':
-    create_pickle_file(sys.argv[5],new_r_update(start_dict()))
-    print(new_r_update(start_dict()))
 
 
 
